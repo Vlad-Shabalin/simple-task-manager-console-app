@@ -35,6 +35,9 @@ public class TaskManage {
             task.markDone();
             System.out.println("Done: " + task.getTaskName());
         }
+
+        tasksInProgressNum--;
+        tasksDoneNum++;
     }
 
     // ---------- Mark a task in progress ----------
@@ -47,6 +50,9 @@ public class TaskManage {
             task.markInProgress();
             System.out.println("In progress: " + task.getTaskName());
         }
+
+        tasksDoneNum--;
+        tasksInProgressNum++;
     }
 
     // ---------- Add a new task ----------
@@ -56,6 +62,7 @@ public class TaskManage {
 
         Task newTask = new Task(taskName);
         tasks.add(newTask);
+        tasksInProgressNum++;
     }
 
 
@@ -68,6 +75,8 @@ public class TaskManage {
             tasks.remove(number - 1);
             System.out.println("Removed: " + number);
         }
+
+        tasksInProgressNum--;
     }
 
     // ---------- Clear all tasks ----------
@@ -76,6 +85,7 @@ public class TaskManage {
         System.out.println("All tasks removed.");
     }
 
+    // ---------- Show tasks in progress ----------
     public void showTasksInProgress() {
         if (!tasks.isEmpty()) {
             System.out.println("Tasks in Progress" + "(" + getTasksInProgressNum() + ")");
@@ -113,6 +123,56 @@ public class TaskManage {
                     return;
                 default:
                     System.out.println("Invalid option!");
+            }
+        } else {
+            System.out.println("""
+                    You don't have any tasks.
+                    You can:
+                    1. Add a new task
+                    2. Come back
+                    """);
+
+            int operation = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (operation) {
+                case 1:
+                    addTask();
+                    break;
+                case 2:
+                    return;
+                default:
+                    System.out.println("Invalid option!");
+            }
+        }
+    }
+
+    // ---------- Show tasks done ----------
+    public void showTasksDone() {
+        if (!tasks.isEmpty()) {
+            int taskNumber = 1;
+            for (Task task : tasks) {
+                if (task.getIsTaskDone()) {
+                    System.out.println(taskNumber++ + ". " + task + ";");
+
+                    System.out.println("""
+                    Choose operation:
+                    1. Mark task in progress
+                    2. Come back
+                    """);
+
+                    int operation = scanner.nextInt();
+
+                    switch (operation) {
+                        case 1:
+                            markTaskInProgress();
+                            break;
+                        case 2:
+                            return;
+                        default:
+                            System.out.println("Invalid option!");
+                    }
+                }
             }
         } else {
             System.out.println("""

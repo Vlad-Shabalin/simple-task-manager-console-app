@@ -7,6 +7,10 @@ public class Task {
         this.markInProgress();
     }
 
+    public boolean getIsTaskDone() {
+        return isTaskDone;
+    }
+
     public String getTaskName() {
         return taskName;
     }
@@ -17,5 +21,10 @@ public class Task {
 
     public void markInProgress() {
         this.isTaskDone = false;
+    }
+
+    @Override
+    public String toString() {
+        return taskName;
     }
 }
