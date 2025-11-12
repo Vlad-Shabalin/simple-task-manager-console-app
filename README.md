@@ -29,9 +29,11 @@ It’s a great beginner-friendly project to learn **object-oriented programming 
 ---
 
 ## 🗂️ Project Structure
+```
 ├── Main.java # Entry point of the program
 ├── TaskManage.java # Contains logic for managing tasks
 └── Task.java # Represents a single task object
+```
 
 ---
 
@@ -64,10 +66,10 @@ Choose operation:
 ---
 
 ## 💡 Future Improvements
-🔹Save and load tasks from a file
-🔹Add task deadlines and priorities
-🔹Improve console UI with colors and formatting
-🔹Migrate to a graphical (GUI) or web version
+- 🔹Save and load tasks from a file
+- 🔹Add task deadlines and priorities
+- 🔹Improve console UI with colors and formatting
+- 🔹Migrate to a graphical (GUI) or web version
 
 ---
 
